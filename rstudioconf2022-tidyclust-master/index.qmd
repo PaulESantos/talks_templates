@@ -1,0 +1,523 @@
+---
+format: 
+  revealjs:
+    theme: [default, style.scss]
+    width: 1280
+    height: 720
+knitr:
+  opts_chunk: 
+    echo: true
+    collapse: true
+    comment: "#>"
+---
+
+##  {background-iframe="boids_/index.html"}
+
+::: {.r-fit-text .title-background}
+tidyclust
+:::
+
+::: {.r-fit-text .title-background}
+expanding tidymodels to clustering
+:::
+
+## tidymodels {style="margin-left:200px;"}
+
+<br>
+
+-   Consistent
+-   Modular
+-   Extensible
+
+![](images/tidymodels.png){.absolute top="0" right="200"}
+
+![](rawpixel/peach-branch-3.png){.absolute top="0" left="-600"}
+
+::: notes
+2/23
+The main thesis behind tidymodels is the modular and extensensible framework, where you learn a few verbs and functions and everything transfers natually once you want to try something else
+:::
+
+## 
+
+![](images/classical-ml.png){fig-align="center" width="100%"}
+
+::: footer
+Illustration credit: <https://vas3k.com/blog/machine_learning/>
+:::
+
+::: notes
+3/23
+:::
+
+## 
+
+![](images/classical-ml-annotated.png){fig-align="center" width="100%"}
+
+::: footer
+Illustration credit: <https://vas3k.com/blog/machine_learning/>
+:::
+
+::: notes
+4/23
+:::
+
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: announcement-start
+::: {.absolute data-id="box1" auto-animate-delay="0" top="550" left="-100" style="color:#E18534;"}
+T
+:::
+
+::: {.absolute data-id="box2" auto-animate-delay="0.1" top="0" left="-50" style="color:#EFC93D;"}
+I
+:::
+
+::: {.absolute data-id="box3" auto-animate-delay="0.2" top="600" left="50" style="color:#E5883C;"}
+D
+:::
+
+::: {.absolute data-id="box4" auto-animate-delay="0.3" top="-100" left="0" style="color:#B12824;"}
+Y
+:::
+
+::: {.absolute data-id="box5" auto-animate-delay="0.4" top="-200" left="300" style="color:#3C674A;"}
+C
+:::
+
+::: {.absolute data-id="box6" auto-animate-delay="0.5" top="550" left="400" style="color:#95AB70;"}
+L
+:::
+
+::: {.absolute data-id="box7" auto-animate-delay="0.6" top="-100" right="-50" style="color:#DAC8B4;"}
+U
+:::
+
+::: {.absolute data-id="box8" auto-animate-delay="0.7" top="500" left="800" style="color:#355B34;"}
+S
+:::
+
+::: {.absolute data-id="box9" auto-animate-delay="0.8" top="50" right="-100" style="color:#667F4E;"}
+T
+:::
+:::
+
+![](rawpixel/flower-branch.png){.absolute top="-150" right="-400"}
+
+![](rawpixel/peach-branch-7.png){.absolute top="-450" left="-400"}
+
+![](rawpixel/peach-branch-2.png){.absolute top="400" left="-200"}
+
+::: notes
+5/23
+:::
+
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: announcement-end
+::: {.absolute data-id="box1" auto-animate-delay="0" top="200" left="0%"}
+T
+:::
+
+::: {.absolute data-id="box2" auto-animate-delay="0.1" top="200" left="12%"}
+I
+:::
+
+::: {.absolute data-id="box3" auto-animate-delay="0.2" top="200" left="20%"}
+D
+:::
+
+::: {.absolute data-id="box4" auto-animate-delay="0.3" top="200" left="32%"}
+Y
+:::
+
+::: {.absolute data-id="box5" auto-animate-delay="0.4" top="200" left="43%"}
+C
+:::
+
+::: {.absolute data-id="box6" auto-animate-delay="0.5" top="200" left="56%"}
+L
+:::
+
+::: {.absolute data-id="box7" auto-animate-delay="0.6" top="200" left="66%"}
+U
+:::
+
+::: {.absolute data-id="box8" auto-animate-delay="0.7" top="200" left="79%"}
+S
+:::
+
+::: {.absolute data-id="box9" auto-animate-delay="0.8" top="200" left="90%"}
+T
+:::
+:::
+
+![](rawpixel/flower-branch.png){.absolute top="-150" right="-400"}
+
+![](rawpixel/peach-branch-7.png){.absolute top="-450" left="-400"}
+
+![](rawpixel/peach-branch-2.png){.absolute top="400" left="-200"}
+
+::: notes
+6/23
+:::
+
+## Why another package?
+
+![](rawpixel/fig-branch-1.png){.absolute top="150" left="0"}
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+:::
+
+::: {.column width="50%"}
+tidymodels was build with [supervised]{.red} models in mind
+:::
+:::
+
+::: notes
+7/23
+:::
+
+## 
+
+::: columns
+::: {.column width="50%"}
+
+**tidymodels**
+
+<br>
+
+::: fontsize40
+Models have outcomes
+
+<br>
+
+Clearly defined `predict()`
+
+<br>
+
+Easy to estimate performance
+:::
+:::
+
+::: {.column width="50%"}
+**tidyclust**
+
+<br>
+
+::: fontsize40
+Models [don't]{.green} have outcomes
+
+<br>
+
+[No]{.green} clearly defined `predict()`
+
+<br>
+
+[No]{.green} clear answer
+:::
+:::
+:::
+
+![](rawpixel/peach-single-1.png){.absolute top="-150" left="1100" style="height:300px;"}
+
+![](rawpixel/peach-branch-6.png){.absolute top="525" left="0"}
+
+::: notes
+8/23
+:::
+
+## Why another package?
+
+![](rawpixel/peach-single-2.png){.absolute top="150" left="650" style="height:250px;"}
+
+![](rawpixel/peach-single-3.png){.absolute top="350" left="0"}
+
+
+::: columns
+::: {.column width="50%"}
+There is some reimplementation in tidyclust
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+:::
+
+::: {.column width="50%"}
+Experience will be as seamless as possible
+:::
+:::
+
+::: notes
+9/23
+:::
+
+## Date Fruit Data
+
+```{r}
+#| echo: false
+library(tidymodels)
+library(tidyclust)
+options(width = 50)
+dates <- readxl::read_xlsx("data/Date_Fruit_Datasets.xlsx") |>
+  janitor::clean_names()
+date_class <- dates$class
+dates <- select(dates, -class)
+```
+
+```{r}
+#| echo: true
+#| collapse: true
+glimpse(dates)
+```
+
+::: notes
+10/23
+
+Remember to mention scales of the data
+:::
+
+## Date Fruit Data
+
+![](rawpixel/peach-branch-1.png){.absolute top="-125" left="1000"}
+
+```{r, dev.args = list(bg = 'transparent'),  fig.align = 'center'}
+#| echo: false
+corrr::correlate(dates) |>
+  autoplot(low = "#EEC852", high = "#3A251C")
+```
+
+::: notes
+11/23
+:::
+
+## 
+
+::: r-fit-text
+Specifying a clustering model
+:::
+
+```{r}
+#| echo: true
+#| collapse: true
+k_means()
+```
+
+![](rawpixel/fruit-branch.png){.absolute top="350" left="775"}
+
+::: notes
+12/23
+:::
+
+## 
+
+::: r-fit-text
+Specifying a clustering model
+:::
+
+![](rawpixel/fruit-branch.png){.absolute top="350" left="775"}
+
+```{r}
+k_means(num_clusters = 5) %>%
+  set_engine("ClusterR", max_iters = 1000)
+```
+
+::: notes
+13/23
+:::
+
+## 
+
+::: r-fit-text
+Specifying a clustering model
+:::
+
+![](rawpixel/fruit-branch.png){.absolute top="350" left="775"}
+
+```{r}
+kmeans_spec <- k_means(num_clusters = 5)
+
+rec_spec <- recipe(~., data = dates) %>%
+  step_normalize(all_numeric_predictors()) %>%
+  step_pca(all_numeric_predictors(), threshold = 0.9)
+
+kmeans_wf <- workflow(rec_spec, kmeans_spec)
+
+kmeans_fit <- fit(kmeans_wf, data = dates)
+```
+
+::: notes
+14/23,  
+
+2 differences,  
+
+once fit we want to do a couple of things
+:::
+
+## 
+
+::: r-fit-text
+[cluster assignment]{.green} + clusters + prediction
+:::
+
+![](rawpixel/peach-branch-4.png){.absolute top="400" left="0"}
+
+```{r}
+extract_cluster_assignment(kmeans_fit)
+```
+
+::: notes
+15/23,  
+
+3 major actions
+:::
+
+## 
+
+::: r-fit-text
+cluster assignment + [clusters]{.green} + prediction
+:::
+
+![](rawpixel/peach-branch-4.png){.absolute top="400" left="0"}
+
+```{r}
+extract_centroids(kmeans_fit)
+```
+
+::: notes
+16/23
+:::
+
+## 
+
+::: r-fit-text
+cluster assignment + clusters + [prediction]{.green}
+:::
+
+![](rawpixel/peach-branch-4.png){.absolute top="400" left="0"}
+
+```{r}
+predict(kmeans_fit, new_data = dates[4:6, ])
+```
+
+::: notes
+17/23
+:::
+
+## Metrics
+
+![](rawpixel/peach-branch-5.png){.absolute top="400" left="0"}
+
+```{r}
+tot_wss <- sse_within_total(kmeans_fit, new_data = dates)
+```
+
+::: notes
+18/23
+
+Total Within-Cluster-Sum of Squared Errors
+:::
+
+## Metrics
+
+![](rawpixel/peach-branch-5.png){.absolute top="400" left="0"}
+
+```{r}
+#my_metrics <- cluster_metric_set(tot_wss, tot_sse)
+
+#my_metrics(kmeans_fit, new_data = dates)
+```
+
+::: notes
+19/23
+
+Total Error Sum of Squares
+:::
+
+## tuning
+
+![](rawpixel/fig-branch-2.png){.absolute top="-550" left="400"}
+
+```{r}
+kmeans_spec <- k_means(num_clusters = tune())
+
+kmeans_wf <- kmeans_wf %>% 
+  update_model(kmeans_spec)
+
+grid <- tibble(num_clusters = 1:10)
+
+set.seed(2022)
+boots <- bootstraps(dates, times = 5)
+```
+
+::: notes
+20/23
+:::
+
+## tuning
+
+![](rawpixel/fig-branch-2.png){.absolute top="-550" left="400"}
+
+```{r}
+#res <- tune_cluster(
+#  kmeans_wf,
+#  resamples = boots,
+#  grid = grid,
+#  metrics = cluster_metric_set(tot_wss)
+#)
+```
+
+::: notes
+21/23
+:::
+
+
+## tuning
+
+![](rawpixel/fig-branch-2.png){.absolute top="-550" left="400"}
+
+```{r}
+#collect_metrics(res)
+```
+
+::: notes
+22/23
+:::
+
+
+## Thank You!
+
+-   Please use the package
+-   give us feedback
+-   make feature requests
+
+![](images/tidyclust.png){.absolute top="0" right="50" style="height:400px;"}
+
+[github.com/EmilHvitfeldt/tidyclust](https://github.com/EmilHvitfeldt/tidyclust)
+
+::: notes
+23/23
+:::
+
+
+---
+
+::: {style="text-align: right;"}
+## Thank you!
+
+![](images/tidyclust.png){.nostretch style="border-radius: 50%;" width="200px"}
+
+### What questions do you have?
+
+[`r fontawesome::fa("github")` \@apreshill](https://github.com/apreshill)\
+[`r fontawesome::fa("twitter")` \@apreshill](https://twitter.com/apreshill)\
+[`r fontawesome::fa("mastodon")` fosstodon.org/\@apreshill](https://fosstodon.org/@apreshill)\
+[`r fontawesome::fa("link")` apreshill.com](https://www.apreshill.com)
+:::

@@ -1,0 +1,238 @@
+---
+format: 
+  revealjs:
+    theme: [default, style.scss]
+    width: 1600
+    height: 900
+    footer: '<a href="https://EmilHvitfeldt.github.io/useR2022-textrecipes/">EmilHvitfeldt.github.io/useR2022-textrecipes/</a>'
+---
+
+##  {.title}
+
+::: r-fit-text
+Improvements in
+
+text preprocessing
+
+using [textrecipes]{.flow}
+:::
+
+::: footer
+[  ](google.com)
+:::
+
+## Text data {.textcenter}
+
+```{r}
+library(animals)
+animals$text[1:16] |>
+  stringr::str_remove(".*\n\\w* \\w* \\w* ")
+```
+
+## Model-ready data {.textcenter}
+
+```{r}
+library(recipes)
+library(textrecipes)
+
+recipe(~ text, data = animals[1:18, ]) %>%
+  step_tokenize(text) %>%
+  step_tokenfilter(text) %>%
+  step_tf(text) %>%
+  prep() %>%
+  bake(new_data = NULL) %>%
+  as.matrix() %>%
+  unname() %>%
+  .[1:15, 1:11]
+```
+
+##  {background-image="https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" background-size="contain" background-position="left"}
+
+::: columns
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+### Same Steps {.r-fit-text}
+
+::: incremental
+::: r-fit-text
+-   Turn [text]{.red} into [tokens]{.orange}
+-   Modify [tokens]{.orange}
+-   (Fancily) Count the [tokens]{.orange}
+:::
+:::
+:::
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@mrrrk_smith?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">John-Mark Smith</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+##
+
+::: columns
+::: {.column width="60%"}
+
+<br> <br> <br>
+
+::: r-fit-text
+
+- Integrates with **recipes** package
+- Modular
+- Flexible
+- Extensible
+
+:::
+
+:::
+
+::: {.column width="35%"}
+![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/textrecipes.png)
+:::
+:::
+
+#  {.title}
+
+::: r-fit-text
+[Tokenization]{.flow}
+:::
+
+::: footer
+[  ](google.com)
+:::
+
+
+::: columns
+::: {.column width="60%"}
+
+::: r-fit-text
+No free lunch
+:::
+
+
+::: r-fit-text
+More information at 
+[smltar.com/tokenization](https://smltar.com/tokenization.html)
+:::
+
+:::
+
+::: {.column width="60%"}
+:::
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@_thedl?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David Lezcano</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+#  {.title}
+
+::: r-fit-text
+[Modify]{.flow}
+:::
+
+::: footer
+[  ](google.com)
+:::
+
+
+## Text normalization
+
+```{r}
+text <- c("sch\U00f6n", "scho\U0308n")
+```
+
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+text
+```
+
+<br> <br>
+
+```{r}
+#| echo: true
+text[1] == text[2]
+```
+
+:::
+
+::: {.column width="50%"}
+
+:::
+:::
+
+## Text normalization
+
+```{r}
+#| echo: true
+text <- c("sch\U00f6n", "scho\U0308n")
+```
+
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+text
+```
+
+<br> <br>
+
+```{r}
+#| echo: true
+text[1] == text[2]
+```
+
+:::
+
+::: 
+
+[step_text_normalization()](https://textrecipes.tidymodels.org/reference/step_text_normalization.html)
+
+:::
+
+##  {background-image="https://images.unsplash.com/photo-1547104442-9f0af4f37a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" background-size="contain" background-position="left"}
+
+::: columns
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: r-fit-text
+[Many more steps](https://textrecipes.tidymodels.org/reference/index.html)
+
+
+
+::: footer
+Photo by <a href="https://unsplash.com/@sincerelymedia?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sincerely Media</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+
+:::
+:::
+
+
+#  {.title}
+Thank you!
+
+- [textrecipes](https://textrecipes.tidymodels.org)
+
+- [smltar.com](https://smltar.com/)
+
+- [emilhvitfeldt.com/](https://www.emilhvitfeldt.com/)
+
+- [@Emil_Hvitfeldt](https://twitter.com/Emil_Hvitfeldt)
+
+
+
+::: {.column width="60%"}
+
+::: footer
+Photo by <a href="https://unsplash.com/@eddrobertson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ed Robertson</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::

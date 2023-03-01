@@ -1,0 +1,25 @@
+- source: test-ojs.qmd
+  quarto-pub:
+    - id: a25d95df-8e42-4208-8575-96d80d978ea3
+      url: 'https://thomasmock.quarto.pub/penguins/'
+  connect:
+    - id: 7647efbb-3b56-42a3-a28a-8abc3578278b
+      url: 'https://colorado.rstudio.com/rsc/content/7647efbb-3b56-42a3-a28a-8abc3578278b/'
+- source: half-quarto.qmd
+  quarto-pub:
+    - id: d8ade177-6bed-4841-9f20-6a87b28799a8
+      url: 'https://thomasmock.quarto.pub/half-quarto-da18/'
+- source: quarto-for-users.qmd
+  quarto-pub:
+    - id: fa872e85-a18c-4317-924d-44226ab9c179
+      url: 'https://thomasmock.quarto.pub/quarto-for-users-da91/'
+    - id: 7f14b671-27d5-4ec8-b909-8ca5af16444e
+      url: 'https://quartopub.org/sites/thomasmock/quarto-for-users'
+- source: self-contained.qmd
+  quarto-pub:
+    - id: f45a85e6-87ce-411f-a99b-47bc4ee92041
+      url: 'https://thomasmock.quarto.pub/self-contained-b4d8/'
+- source: quarto-curious.qmd
+  quarto-pub:
+    - id: 35e82784-dd57-4e6a-8f4b-25590b7c870f
+      url: 'https://quartopub.org/sites/thomasmock/quarto-curious'
